@@ -14,4 +14,4 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: boardsource5x12
+    shield: boardsource4x12
