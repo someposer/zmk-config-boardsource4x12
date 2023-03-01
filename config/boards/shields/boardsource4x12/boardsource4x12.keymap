@@ -21,8 +21,10 @@
 #define BT2 BT_SEL 2
 #define BT3 BT_SEL 3
 #define BT4 BT_SEL 4
-#define SCRNF LS(LG(N3))  // MacOS Full Screenshot
-#define SCRNP LS(LG(N4))  // MacOS Partial Screenshot
+#define SCRNF LS(LG(N3))        // MacOS Full Screenshot
+#define SCRNP LS(LG(N4))        // MacOS Partial Screenshot
+#define SCRNFC LC(LS(LG(N3)))   // MacOS Full Screenshot to Clipboard
+#define SCRNPC LC(LS(LG(N4)))   // MacOS Partial Screenshot to Clipboard
 
 / {
     behaviors {
@@ -96,15 +98,15 @@
 
         adjust_layer {
             // -------------------------------------------------------------------------------------------------
-            // | BT_CLR|  BT 0 |  BT 1 |  BT 2 |  BT 3 |  BT 4 |  NONE |  NONE |  NONE |  NONE |  NONE | SCRNF |
-            // |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE | SCRNP |
+            // | BT_CLR|  BT 0 |  BT 1 |  BT 2 |  BT 3 |  BT 4 |  NONE |  NONE |  NONE |  NONE | SCRNF | SCRNFC|
+            // |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE | SCRNP | SCRNPC|
             // | RESET |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |
             // |  BOOT |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |
 
 
             bindings = <
-                &bt BT_CLR  &bt BT0     &bt BT1     &bt BT2     &bt BT3     &bt BT4     &none       &none       &none       &none       &none       &kp SCRNF
-                &none       &none       &none       &none       &none       &none       &none       &none       &none       &none       &none       &kp SCRNP
+                &bt BT_CLR  &bt BT0     &bt BT1     &bt BT2     &bt BT3     &bt BT4     &none       &none       &none       &none       &kp SCRNF   &kp SCRNFC
+                &none       &none       &none       &none       &none       &none       &none       &none       &none       &none       &kp SCRNP   &kp SCRNPC
                 &reset      &none       &none       &none       &none       &none       &none       &none       &none       &none       &none       &none
                 &bootloader &none       &none       &none       &none       &none       &none       &none       &none       &none       &none       &none
             >;
