@@ -104,7 +104,7 @@
 
             bindings = <
                 &bt BT_CLR  &bt BT0     &bt BT1     &bt BT2     &bt BT3     &bt BT4     &none       &none       &none       &none       &none       &kp SCRNF
-                &boot       &none       &none       &none       &none       &none       &none       &none       &none       &none       &none       &kp SCRNP
+                &none       &none       &none       &none       &none       &none       &none       &none       &none       &none       &none       &kp SCRNP
                 &reset      &none       &none       &none       &none       &none       &none       &none       &none       &none       &none       &none
                 &bootloader &none       &none       &none       &none       &none       &none       &none       &none       &none       &none       &none
             >;
