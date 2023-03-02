@@ -9,6 +9,12 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
+// Layer Definitions
+#define DEFAULT 0
+#define LOWER 1
+#define RAISE 2
+#define ADJUST 3
+
 // Abbreviations
 #define BRID C_BRIGHTNESS_DEC
 #define BRIU C_BRIGHTNESS_INC
@@ -45,70 +51,86 @@
         };
     };
 
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <LOWER RAISE>;
+            then-layer = <ADJUST>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            // -------------------------------------------------------------------------------------------------
-            // |  TAB  |   Q   |   W   |   E   |   R   |   T   |   Y   |   U   |   I   |   O   |   P   | BSPC+ |
-            // |  ESC  |   A   |   S   |   D   |   F   |   G   |   H   |   J   |   K   |   L   |   ;   |   '   |
-            // | SHIFT |   Z   |   X   |   C   |   V   |   B   |   N   |   M   |   ,   |   .   |   /   | ENTER |
-            // |  MEH+ |  CTRL |  ALT  |  GUI  | LOWER | SPACE | SPACE | RAISE |  LARW |  DARW |  UARW |  RARW |
-
-
             bindings = <
-                &kp TAB     &kp Q       &kp W       &kp E       &kp R       &kp T       &kp Y       &kp U       &kp I       &kp O       &kp P       &bspc_del
-                &kp ESC     &kp A       &kp S       &kp D       &kp F       &kp G       &kp H       &kp J       &kp K       &kp L       &kp SEMI    &kp SQT
-                &kp LSHFT   &kp Z       &kp X       &kp C       &kp V       &kp B       &kp N       &kp M       &kp COMMA   &kp DOT     &kp FSLH    &kp RET
-                &td_meh     &kp LCTRL   &kp LALT    &kp LGUI    &mo 1       &kp SPACE   &kp SPACE   &mo 2       &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT 
+        // ╭----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------╮
+        // | TAB      |  Q       |  W       |  E       |  R       |  T       |  Y       |  U       |  I       |  O       |  P       | BSPC_DEL |
+             &kp TAB     &kp Q      &kp W      &kp E      &kp R      &kp T      &kp Y      &kp U      &kp I      &kp O      &kp P    &bspc_del  
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | ESC      |  A       |  S       |  D       |  F       |  G       |  H       |  J       |  K       |  L       |  ;       |  '       |
+             &kp ESC     &kp A      &kp S      &kp D      &kp F      &kp G      &kp H      &kp J      &kp K      &kp L     &kp SEMI   &kp SQT   
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | SHIFT    |  Z       |  X       |  C       |  V       |  B       |  N       |  M       |  ,       |  .       |  /       | ENTER    |
+            &kp LSHFT    &kp Z      &kp X      &kp C      &kp V      &kp B      &kp N      &kp M    &kp COMMA   &kp DOT    &kp FSLH   &kp RET   
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | MEH+     | CTRL     | ALT      | GUI      | LOWER    | SPACE    | SPACE    | RAISE    | LEFT     | DOWN     | UP       | RIGHT    |
+             &td_meh   &kp LCTRL   &kp LALT   &kp LGUI  &mo LOWER  &kp SPACE  &kp SPACE  &mo RAISE   &kp LEFT   &kp DOWN    &kp UP   &kp RIGHT  
+        // ╰----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------╯
             >;
         };
 
         lower_layer {
-            // -------------------------------------------------------------------------------------------------
-            // |   ~   |   !   |   @   |   #   |   $   |   %   |   ^   |   &   |   *   |   (   |   )   | TRANS |
-            // |  DEL  |   F1  |   F2  |   F3  |   F4  |   F5  |   F6  |   _   |   +   |   {   |   }   |   |   |
-            // | TRANS |   F7  |   F8  |   F9  |  F10  |  F11  |  F12  |  NONE |  NONE |  NONE |  NONE | TRANS |
-            // | TRANS | TRANS | TRANS | TRANS | TRANS | TRANS | TRANS | ADJUST|  HOME |  PGDN |  PGUP |  END  |
-
-
             bindings = <
-                &kp TILDE   &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT   &kp CARET   &kp AMPS    &kp ASTRK   &kp LPAR    &kp RPAR    &trans
-                &kp DEL     &kp F1      &kp F2      &kp F3      &kp F4      &kp F5      &kp F6      &kp UNDER   &kp PLUS    &kp LBRC    &kp RBRC    &kp PIPE
-                &trans      &kp F7      &kp F8      &kp F9      &kp F10     &kp F11     &kp F12     &none       &none       &none       &none       &trans
-                &trans      &trans      &trans      &trans      &trans      &trans      &trans      &mo 3       &kp HOME    &kp PG_DN   &kp PG_UP   &kp END 
+        // ╭----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------╮
+        // |  ~       |  !       |  @       |  #       |  $       |  %       |  ^       |  &       |  *       |  (       |  )       | TRANS    |
+            &kp TILDE   &kp EXCL    &kp AT    &kp HASH   &kp DLLR  &kp PRCNT  &kp CARET   &kp AMPS  &kp ASTRK   &kp LPAR   &kp RPAR    &trans   
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | DEL      | F1       | F2       | F3       | F4       | F5       | F6       |  _       |  +       |  {       |  }       |  |       |
+             &kp DEL     &kp F1     &kp F2     &kp F3     &kp F4     &kp F5     &kp F6   &kp UNDER   &kp PLUS   &kp LBRC   &kp RBRC   &kp PIPE  
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | TRANS    | F7       | F8       | F9       | F10      | F11      | F12      | NONE     | NONE     | NONE     | NONE     | TRANS    |
+              &trans     &kp F7     &kp F8     &kp F9    &kp F10    &kp F11    &kp F12     &none      &none      &none      &none      &trans   
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | TRANS    | TRANS    | TRANS    | TRANS    | TRANS    | TRANS    | TRANS    | TRANS    | HOME     | PG DN    | PG UP    | END      |
+              &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans    &kp HOME  &kp PG_DN  &kp PG_UP   &kp END   
+        // ╰----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------╯
             >;
         };
 
         raise_layer {
-            // -------------------------------------------------------------------------------------------------
-            // |   `   |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   |   0   | TRANS |
-            // |  DEL  |  BRID |  BRIU |  DESK |  MUTE | CVOLD | CVOLU |   -   |   =   |   [   |   ]   |   \   |
-            // | TRANS |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE | TRANS |
-            // | TRANS | TRANS | TRANS | TRANS | ADJUST| TRANS | TRANS | TRANS |  NEXT | VOL_DN| VOL_UP|  PLAY |
-
-
             bindings = <
-                &kp GRAVE   &kp N1      &kp N2      &kp N3      &kp N4      &kp N5      &kp N6      &kp N7      &kp N8      &kp N9      &kp N0      &trans
-                &kp DEL     &kp BRID    &kp BRIU    &kp DESK    &kp MUTE    &kp CVOLD   &kp CVOLU   &kp MINUS   &kp EQUAL   &kp LBKT    &kp RBKT    &kp BSLH
-                &trans      &none       &none       &none       &none       &none       &none       &none       &none       &none       &none       &trans
-                &trans      &trans      &trans      &trans      &mo 3       &trans      &trans      &trans      &kp C_NEXT  &kp CVOLD   &kp CVOLU   &kp C_PLAY_PAUSE
+        // ╭----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------╮
+        // |  `       |  1       |  2       |  3       |  4       |  5       |  6       |  7       |  8       |  9       |  0       | TRANS    |
+            &kp GRAVE    &kp N1     &kp N2     &kp N3     &kp N4     &kp N5     &kp N6     &kp N7     &kp N8     &kp N9     &kp N0     &trans   
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | DEL      | BRI_UP   | BRI_DN   | APPS     | MUTE     | VOL_DN   | VOL_UP   |  -       |  =       |  [       |  ]       |  \       |
+             &kp DEL    &kp BRID   &kp BRIU   &kp DESK   &kp MUTE  &kp CVOLD  &kp CVOLU  &kp MINUS  &kp EQUAL   &kp LBKT   &kp RBKT   &kp BSLH  
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | TRANS    | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | TRANS    |
+              &trans     &none      &none      &none      &none      &none      &none      &none      &none      &none      &none      &trans   
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | TRANS    | TRANS    | TRANS    | TRANS    | TRANS    | TRANS    | TRANS    | TRANS    | NEXT     | VOL_DN   | VOL_UP   | PLAY     |
+              &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans   &kp C_NEXT &kp CVOLD  &kp CVOLU  &kp C_PLAY_PAUSE 
+        // ╰----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------╯
             >;
         };
 
         adjust_layer {
-            // -------------------------------------------------------------------------------------------------
-            // | BT_CLR|  BT 0 |  BT 1 |  BT 2 |  BT 3 |  BT 4 |  NONE |  NONE |  NONE |  NONE | SCRNF | SCRNFC|
-            // |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE | SCRNP | SCRNPC|
-            // | RESET |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |
-            // |  BOOT |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |  NONE |
-
-
             bindings = <
-                &bt BT_CLR  &bt BT0     &bt BT1     &bt BT2     &bt BT3     &bt BT4     &none       &none       &none       &none       &kp SCRNF   &kp SCRNFC
-                &none       &none       &none       &none       &none       &none       &none       &none       &none       &none       &kp SCRNP   &kp SCRNPC
-                &reset      &none       &none       &none       &none       &none       &none       &none       &none       &none       &none       &none
-                &bootloader &none       &none       &none       &none       &none       &none       &none       &none       &none       &none       &none
+        // ╭----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------╮
+        // | RESET    | BT 1     | BT 2     | BT 3     | BT 4     | BT 5     | NONE     | NONE     | SCRNF    | SCRNP    | SCRNFC   | SCRNPC   |
+            &bt BT_CLR  &bt BT0    &bt BT1    &bt BT2    &bt BT3    &bt BT4     &none      &none    &kp SCRNF  &kp SCRNP  &kp SCRNFC &kp SCRNPC 
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // |BOOTLOADER| BT_CLR   | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     |
+              &none      &none      &none      &none      &none      &none      &none      &none      &none      &none      &none      &none    
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     |
+              &reset     &none      &none      &none      &none      &none      &none      &none      &none      &none      &none      &none    
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | NONE     | NONE     | NONE     | NONE     | TRANS    | NONE     | NONE     | TRANS    | NONE     | NONE     | NONE     | NONE     |
+            &bootloader   &none      &none      &none      &trans     &none      &none      &trans     &none      &none      &none      &none    
+        // ╰----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------╯
             >;
         };
     };
