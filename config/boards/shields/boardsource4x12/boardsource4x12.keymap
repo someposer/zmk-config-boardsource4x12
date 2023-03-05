@@ -10,11 +10,12 @@
 #include <dt-bindings/zmk/outputs.h>
 
 // Layer Definitions
-#define DEFAULT 0
-#define COLEMAK 1
-#define LOWER 2
-#define RAISE 3
-#define ADJUST 4
+#define QWRTY 0     // Qwerty
+#define CLMK 1      // Colemak
+#define DVRK 2      // Dvorkak
+#define LOWER 3
+#define RAISE 4
+#define ADJUST 5
 
 // Abbreviations
 #define BRID F14
@@ -99,6 +100,24 @@
             >;
         };
 
+        dvorak_layer {
+            bindings = <
+        // ╭----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------╮
+        // | TAB      |  '       |  ,       |  .       |  P       |  Y       |  F       |  G       |  C       |  R       |  L       | BSPC_DEL |
+             &kp TAB     &kp SQT  &kp COMMA    &kp DOT    &kp P      &kp G      &kp F      &kp G      &kp C      &kp R     &kp L     &bspc_del  
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | ESC      |  A       |  O       |  E       |  U       |  I       |  D       |  H       |  T       |  N       |  S       |  /       |
+             &kp ESC     &kp A      &kp O      &kp E     &kp U      &kp I      &kp D      &kp H      &kp T      &kp N      &kp S      &kp FSLH  
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | SHIFT    |  ;       |  Q       |  J       |  K       |  X       |  B       |  M       |  W       |  V       |  Z       | ENTER    |
+            &kp LSHFT   &kp SEMI    &kp Q      &kp J      &kp K      &kp X      &kp B      &kp M      &kp W      &kp V      &kp Z     &kp RET   
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | MEH+     | CTRL     | ALT      | GUI      | LOWER    | SPACE    | SPACE    | RAISE    | LEFT     | DOWN     | UP       | RIGHT    |
+             &td_meh   &kp LCTRL   &kp LALT   &kp LGUI  &mo LOWER  &kp SPACE  &kp SPACE  &mo RAISE   &kp LEFT   &kp DOWN    &kp UP   &kp RIGHT  
+        // ╰----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------╯
+            >;
+        };
+
         lower_layer {
             bindings = <
         // ╭----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------╮
@@ -141,8 +160,8 @@
         // | BT_CLR   | BT 1     | BT 2     | BT 3     | BT 4     | BT 5     | NONE     | NONE     | SCRNF    | SCRNP    | SCRNFC   | SCRNPC   |
             &bt BT_CLR  &bt BT0    &bt BT1    &bt BT2    &bt BT3    &bt BT4     &none      &none    &kp SCRNF  &kp SCRNP  &kp SCRNFC &kp SCRNPC 
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
-        // | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | QWRTY    | CLMK     | NONE     | NONE     | NONE     |
-              &none      &none      &none      &none      &none      &none      &none      &to 0      &to 1      &none      &none      &none
+        // | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | QWRTY    | CLMK     | DVRK     | NONE     | NONE     |
+              &none      &none      &none      &none      &none      &none      &none    &to QWRTY   &to CLMK   &to DVRK   &none      &none
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     |
               &reset     &none      &none      &none      &none      &none      &none      &none      &none      &none      &none      &none
