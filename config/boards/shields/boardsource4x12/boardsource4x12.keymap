@@ -40,8 +40,16 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_MEH_HYPE";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <300>;
             bindings = <&kp LC(LS(LALT))>, <&kp LC(LS(LA(LGUI)))>;
+        };
+
+        td_shft: tap_dance_shift_caps {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_SHIFT_CAPS";
+            #binding-cells = <0>;
+            tapping-term-ms = <300>;
+            bindings = <&kp LSHFT>, <&caps_word>;
         };
 
         bspc_del: backspace_delete {
@@ -74,7 +82,7 @@
              &kp ESC     &kp A      &kp S      &kp D      &kp F      &kp G      &kp H      &kp J      &kp K      &kp L     &kp SEMI   &kp SQT   
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | SHIFT    |  Z       |  X       |  C       |  V       |  B       |  N       |  M       |  ,       |  .       |  /       | ENTER    |
-            &kp LSHFT    &kp Z      &kp X      &kp C      &kp V      &kp B      &kp N      &kp M    &kp COMMA   &kp DOT    &kp FSLH   &kp RET   
+            &td_shft     &kp Z      &kp X      &kp C      &kp V      &kp B      &kp N      &kp M    &kp COMMA   &kp DOT    &kp FSLH   &kp RET   
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | MEH+     | CTRL     | ALT      | GUI      | LOWER    | SPACE    | SPACE    | RAISE    | LEFT     | DOWN     | UP       | RIGHT    |
              &td_meh   &kp LCTRL   &kp LALT   &kp LGUI  &mo LOWER  &kp SPACE  &kp SPACE  &mo RAISE   &kp LEFT   &kp DOWN    &kp UP   &kp RIGHT  
@@ -92,7 +100,7 @@
              &kp ESC     &kp A      &kp R      &kp S      &kp T      &kp D      &kp H      &kp N      &kp E      &kp I      &kp O      &kp SQT   
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | SHIFT    |  Z       |  X       |  C       |  V       |  B       |  K       |  M       |  ,       |  .       |  /       | ENTER    |
-            &kp LSHFT    &kp Z      &kp X      &kp C      &kp V      &kp B      &kp K      &kp M    &kp COMMA   &kp DOT    &kp FSLH   &kp RET   
+            &td_shft     &kp Z      &kp X      &kp C      &kp V      &kp B      &kp K      &kp M    &kp COMMA   &kp DOT    &kp FSLH   &kp RET   
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | MEH+     | CTRL     | ALT      | GUI      | LOWER    | SPACE    | SPACE    | RAISE    | LEFT     | DOWN     | UP       | RIGHT    |
              &td_meh   &kp LCTRL   &kp LALT   &kp LGUI  &mo LOWER  &kp SPACE  &kp SPACE  &mo RAISE   &kp LEFT   &kp DOWN    &kp UP   &kp RIGHT  
@@ -110,7 +118,7 @@
              &kp ESC     &kp A      &kp O      &kp E     &kp U      &kp I      &kp D      &kp H      &kp T      &kp N      &kp S      &kp FSLH  
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | SHIFT    |  ;       |  Q       |  J       |  K       |  X       |  B       |  M       |  W       |  V       |  Z       | ENTER    |
-            &kp LSHFT   &kp SEMI    &kp Q      &kp J      &kp K      &kp X      &kp B      &kp M      &kp W      &kp V      &kp Z     &kp RET   
+            &td_shft    &kp SEMI    &kp Q      &kp J      &kp K      &kp X      &kp B      &kp M      &kp W      &kp V      &kp Z     &kp RET   
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | MEH+     | CTRL     | ALT      | GUI      | LOWER    | SPACE    | SPACE    | RAISE    | LEFT     | DOWN     | UP       | RIGHT    |
              &td_meh   &kp LCTRL   &kp LALT   &kp LGUI  &mo LOWER  &kp SPACE  &kp SPACE  &mo RAISE   &kp LEFT   &kp DOWN    &kp UP   &kp RIGHT  
