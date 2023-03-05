@@ -16,8 +16,8 @@
 #define ADJUST 3
 
 // Abbreviations
-#define BRID C_BRIGHTNESS_DEC
-#define BRIU C_BRIGHTNESS_INC
+#define BRID F14
+#define BRIU F15
 #define DESK LC(UP)
 #define MUTE C_MUTE
 #define CVOLD C_VOLUME_DOWN
@@ -105,7 +105,7 @@
             &kp GRAVE    &kp N1     &kp N2     &kp N3     &kp N4     &kp N5     &kp N6     &kp N7     &kp N8     &kp N9     &kp N0     &trans   
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | DEL      | BRI_UP   | BRI_DN   | APPS     | MUTE     | VOL_DN   | VOL_UP   |  -       |  =       |  [       |  ]       |  \       |
-             &kp DEL    &kp C_BRIGHTNESS_DEC   &kp C_BRIGHTNESS_INC   &kp DESK   &kp MUTE  &kp CVOLD  &kp CVOLU  &kp MINUS  &kp EQUAL   &kp LBKT   &kp RBKT   &kp BSLH  
+             &kp DEL    &kp BRID   &kp BRIU   &kp DESK   &kp MUTE  &kp CVOLD  &kp CVOLU  &kp MINUS  &kp EQUAL   &kp LBKT   &kp RBKT   &kp BSLH  
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | TRANS    | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | TRANS    | TRANS    | TRANS    | TRANS    |
               &trans     &none      &none      &none      &none      &none      &none      &none      &trans     &trans     &trans     &trans   
