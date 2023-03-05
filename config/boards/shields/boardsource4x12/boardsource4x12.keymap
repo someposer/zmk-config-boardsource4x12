@@ -11,9 +11,10 @@
 
 // Layer Definitions
 #define DEFAULT 0
-#define LOWER 1
-#define RAISE 2
-#define ADJUST 3
+#define COLEMAK 1
+#define LOWER 2
+#define RAISE 3
+#define ADJUST 4
 
 // Abbreviations
 #define BRID F14
@@ -80,6 +81,24 @@
             >;
         };
 
+        colemak_layer {
+            bindings = <
+        // ╭----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------╮
+        // | TAB      |  Q       |  W       |  F       |  P       |  G       |  J       |  L       |  U       |  Y       |  ;       | BSPC_DEL |
+             &kp TAB     &kp Q      &kp W      &kp F      &kp P      &kp G      &kp J      &kp L      &kp U      &kp Y     &kp SEMI  &bspc_del  
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | ESC      |  A       |  R       |  S       |  T       |  D       |  H       |  N       |  E       |  I       |  O       |  '       |
+             &kp ESC     &kp A      &kp R      &kp S      &kp T      &kp D      &kp H      &kp N      &kp E      &kp I      &kp O      &kp SQT   
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | SHIFT    |  Z       |  X       |  C       |  V       |  B       |  K       |  M       |  ,       |  .       |  /       | ENTER    |
+            &kp LSHFT    &kp Z      &kp X      &kp C      &kp V      &kp B      &kp K      &kp M    &kp COMMA   &kp DOT    &kp FSLH   &kp RET   
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | MEH+     | CTRL     | ALT      | GUI      | LOWER    | SPACE    | SPACE    | RAISE    | LEFT     | DOWN     | UP       | RIGHT    |
+             &td_meh   &kp LCTRL   &kp LALT   &kp LGUI  &mo LOWER  &kp SPACE  &kp SPACE  &mo RAISE   &kp LEFT   &kp DOWN    &kp UP   &kp RIGHT  
+        // ╰----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------╯
+            >;
+        };
+
         lower_layer {
             bindings = <
         // ╭----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------╮
@@ -122,8 +141,8 @@
         // | BT_CLR   | BT 1     | BT 2     | BT 3     | BT 4     | BT 5     | NONE     | NONE     | SCRNF    | SCRNP    | SCRNFC   | SCRNPC   |
             &bt BT_CLR  &bt BT0    &bt BT1    &bt BT2    &bt BT3    &bt BT4     &none      &none    &kp SCRNF  &kp SCRNP  &kp SCRNFC &kp SCRNPC 
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
-        // | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     |
-              &none      &none      &none      &none      &none      &none      &none      &none      &none      &none      &none      &none
+        // | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | QWRTY    | CLMK     | NONE     | NONE     | NONE     |
+              &none      &none      &none      &none      &none      &none      &none      &to 0      &to 1      &none      &none      &none
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     |
               &reset     &none      &none      &none      &none      &none      &none      &none      &none      &none      &none      &none
