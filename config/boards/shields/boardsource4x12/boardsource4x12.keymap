@@ -123,13 +123,13 @@
             &bt BT_CLR  &bt BT0    &bt BT1    &bt BT2    &bt BT3    &bt BT4     &none      &none    &kp SCRNF  &kp SCRNP  &kp SCRNFC &kp SCRNPC 
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     |
-              &none      &none      &none      &none      &none      &none      &none      &none      &none      &none      &none      &none    
+              &none      &none      &none      &none      &none      &none      &none      &none      &none      &none      &none      &kp K_PWR    
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     |
-              &reset     &none      &none      &none      &none      &none      &none      &none      &none      &none      &none      &none    
+              &reset     &none      &none      &none      &none      &none      &none      &none      &none      &none      &none      &kp C_PWR  
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | NONE     | NONE     | NONE     | NONE     | TRANS    | NONE     | NONE     | TRANS    | NONE     | NONE     | NONE     | NONE     |
-            &bootloader  &none      &none      &none      &trans     &none      &none      &trans     &none      &none      &none      &none    
+            &bootloader  &none      &none      &none      &trans     &none      &none      &trans     &none      &none      &none      &kp C_SLEEP
         // ╰----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------╯
             >;
         };
