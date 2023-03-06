@@ -13,9 +13,10 @@
 #define QWRTY 0     // Qwerty
 #define CLMK 1      // Colemak
 #define DVRK 2      // Dvorkak
-#define LOWER 3
-#define RAISE 4
-#define ADJUST 5
+#define WORK 3      // Workman
+#define LOWER 4
+#define RAISE 5
+#define ADJUST 6
 
 // Abbreviations
 #define BRID F14
@@ -126,6 +127,24 @@
             >;
         };
 
+        workman_layer {
+            bindings = <
+        // ╭----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------╮
+        // | TAB      |  Q       |  D       |  R       |  W       |  B       |  J       |  F       |  U       |  P       |  ;       | BSPC_DEL |
+             &kp TAB     &kp Q      &kp D      &kp R      &kp W      &kp B      &kp J      &kp F      &kp U      &kp P     &kp SEMI  &bspc_del  
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | ESC      |  A       |  S       |  H       |  T       |  G       |  Y       |  N       |  E       |  O       |  I       |  '       |
+             &kp ESC     &kp A      &kp S      &kp H     &kp T      &kp G      &kp Y      &kp N      &kp E      &kp O      &kp I       &kp SQT  
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | SHIFT    |  Z       |  X       |  M       |  C       |  V       |  K       |  L       |  ,       |  .       |  /       | ENTER    |
+            &td_shft     &kp Z      &kp X      &kp M      &kp C      &kp V      &kp K      &kp L      &kp DOT  &kp COMMA   &kp FSLH   &kp RET   
+        // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
+        // | MEH+     | CTRL     | ALT      | GUI      | LOWER    | SPACE    | SPACE    | RAISE    | LEFT     | DOWN     | UP       | RIGHT    |
+             &td_meh   &kp LCTRL   &kp LALT   &kp LGUI  &mo LOWER  &kp SPACE  &kp SPACE  &mo RAISE   &kp LEFT   &kp DOWN    &kp UP   &kp RIGHT  
+        // ╰----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------┴----------╯
+            >;
+        };
+
         lower_layer {
             bindings = <
         // ╭----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------╮
@@ -169,7 +188,7 @@
             &bt BT_CLR  &bt BT0    &bt BT1    &bt BT2    &bt BT3    &bt BT4     &none      &none    &kp SCRNF  &kp SCRNP  &kp SCRNFC &kp SCRNPC 
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | QWRTY    | CLMK     | DVRK     | NONE     | NONE     |
-              &none      &none      &none      &none      &none      &none      &none    &to QWRTY   &to CLMK   &to DVRK   &none      &none
+              &none      &none      &none      &none      &none      &none      &none    &to QWRTY   &to CLMK   &to DVRK   &to WORK    &none
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     |
               &reset     &none      &none      &none      &none      &none      &none      &none      &none      &none      &none      &none
