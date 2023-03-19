@@ -58,7 +58,7 @@
             label = "BACKSPACE_DELETE";
             #binding-cells = <0>;
             bindings = <&kp BACKSPACE>, <&kp DELETE>;
-            mods = <(MOD_LCTRL|MOD_LALT)>;
+            mods = <(MOD_LCTL|MOD_LALT)>;
             keep-mods = <(MOD_LALT)>;
         };
     };
