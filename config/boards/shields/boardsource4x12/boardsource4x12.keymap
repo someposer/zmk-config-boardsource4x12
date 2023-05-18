@@ -192,7 +192,7 @@
               &none      &none      &none      &none      &none      &none      &none    &to QWRTY   &to CLMK   &to DVRK   &to WORK    &none
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     |
-              &reset     &none      &none      &none      &none      &none      &none      &none      &none      &none      &none      &none
+            &sys_reset   &none      &none      &none      &none      &none      &none      &none      &none      &none      &none      &none
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | NONE     | NONE     | NONE     | NONE     | TRANS    | NONE     | NONE     | TRANS    | NONE     | NONE     | NONE     | NONE     |
             &bootloader  &none      &none      &none      &trans     &none      &none      &trans     &none      &none      &none      &none
