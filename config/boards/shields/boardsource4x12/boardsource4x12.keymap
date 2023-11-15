@@ -18,10 +18,16 @@
 #define RAISE 5
 #define ADJUST 6
 
+// Apple Specific Definitions
+// See: https://opensource.apple.com/source/IOHIDFamily/IOHIDFamily-1035.70.7/IOHIDFamily/AppleHIDUsageTables.h.auto.html
+#define APPL_KEY_PAGE (0xff01)
+#define EXPOSE_ALL (ZMK_HID_USAGE(APPL_KEY_PAGE, 0x0010))
+#define DND (ZMK_HID_USAGE(HID_USAGE_GD, HID_USAGE_GD_SYSTEM_DO_NOT_DISTURB))
+
 // Abbreviations
 #define BRID F14
 #define BRIU F15
-#define DESK LC(UP)
+#define EXPO (EXPOSE_ALL)
 #define MUTE C_MUTE
 #define CVOLD C_VOLUME_DOWN
 #define CVOLU C_VOLUME_UP
@@ -30,6 +36,7 @@
 #define BT2 BT_SEL 2
 #define BT3 BT_SEL 3
 #define BT4 BT_SEL 4
+#define LOCK LC(LG(Q))          // MacOS Lock Screen
 #define SCRNF LS(LG(N3))        // MacOS Full Screenshot
 #define SCRNP LS(LG(N4))        // MacOS Partial Screenshot
 #define SCRNFC LC(LS(LG(N3)))   // MacOS Full Screenshot to Clipboard
@@ -170,8 +177,8 @@
         // |  `       |  1       |  2       |  3       |  4       |  5       |  6       |  7       |  8       |  9       |  0       | TRANS    |
             &kp GRAVE    &kp N1     &kp N2     &kp N3     &kp N4     &kp N5     &kp N6     &kp N7     &kp N8     &kp N9     &kp N0     &trans   
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
-        // | DEL      | BRI_UP   | BRI_DN   | APPS     | MUTE     | VOL_DN   | VOL_UP   |  -       |  =       |  [       |  ]       |  \       |
-             &kp DEL    &kp BRID   &kp BRIU   &kp DESK   &kp MUTE  &kp CVOLD  &kp CVOLU  &kp MINUS  &kp EQUAL   &kp LBKT   &kp RBKT   &kp BSLH  
+        // | DEL      | BRI_UP   | BRI_DN   | EXPO     | DND      | MUTE     | NONE     |  -       |  =       |  [       |  ]       |  \       |
+             &kp DEL    &kp BRID   &kp BRIU   &kp EXPO   &kp DND    &kp MUTE   &none      &kp MINUS  &kp EQUAL   &kp LBKT   &kp RBKT   &kp BSLH  
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | TRANS    | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | TRANS    | TRANS    | TRANS    | TRANS    |
               &trans     &none      &none      &none      &none      &none      &none      &none      &trans     &trans     &trans     &trans   
@@ -186,7 +193,7 @@
             bindings = <
         // ╭----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------╮
         // | BT_CLR   | BT 1     | BT 2     | BT 3     | BT 4     | BT 5     | NONE     | NONE     | NONE     | NONE     | NONE     | LOCK     |
-            &bt BT_CLR  &bt BT0    &bt BT1    &bt BT2    &bt BT3    &bt BT4     &none      &none      &none      &none      &none    &kp C_AL_LOCK
+            &bt BT_CLR  &bt BT0    &bt BT1    &bt BT2    &bt BT3    &bt BT4     &none      &none      &none      &none      &none     &kp LOCK
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | QWRTY    | CLMK     | DVRK     | WORK     | NONE     |
               &none      &none      &none      &none      &none      &none      &none    &to QWRTY   &to CLMK   &to DVRK   &to WORK    &none
