@@ -185,10 +185,10 @@
         adjust_layer {
             bindings = <
         // ╭----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------┬----------╮
-        // | BT_CLR   | BT 1     | BT 2     | BT 3     | BT 4     | BT 5     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     |
-            &bt BT_CLR  &bt BT0    &bt BT1    &bt BT2    &bt BT3    &bt BT4     &none      &none      &none      &none      &none      &none
+        // | BT_CLR   | BT 1     | BT 2     | BT 3     | BT 4     | BT 5     | NONE     | NONE     | NONE     | NONE     | NONE     | LOCK     |
+            &bt BT_CLR  &bt BT0    &bt BT1    &bt BT2    &bt BT3    &bt BT4     &none      &none      &none      &none      &none    &kp C_AL_LOCK
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
-        // | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | QWRTY    | CLMK     | DVRK     | NONE     | NONE     |
+        // | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | QWRTY    | CLMK     | DVRK     | WORK     | NONE     |
               &none      &none      &none      &none      &none      &none      &none    &to QWRTY   &to CLMK   &to DVRK   &to WORK    &none
         // ├----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┼----------┤
         // | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | NONE     | SCRNF    | SCRNP    | SCRNFC   | SCRNPC   |
